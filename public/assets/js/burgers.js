@@ -9,7 +9,7 @@ $(document).ready(function(){
     }
     $.ajax({
       url: "/api/burgers",
-      method: "post",
+      method: "POST",
       data: burgerData // req.body
     })
     .then(function(){
@@ -25,7 +25,7 @@ $(document).ready(function(){
     const burgerId = $(this).attr("data-id");
     const devoured = $(this).attr("data-devoured")
     $.ajax({
-      url: `/api/burgers/${burgerid}`,
+      url: `/api/burgers/${burgerId}`,
       method: "PUT",
       data: {
         devoured: devoured//req.body
