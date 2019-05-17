@@ -42,13 +42,23 @@ module.exports = app => {
           res.json(err);
         });
     });
-    //delete a burger bu its id
-    app.delete("/api/burgers/:id", function(req, res){
+
+    app.delete("/api/burgers/:id", function (req, res) {
+      //req.body => {devoured}: true || {devoured: false}
       burgers.remove(req.params.id)
-      .then(burgers_db => res.json(burgers_db))
-      .catch(err => {
-        console.log(err);
-        res.json(err);
-      });
+        .then(burgers_db => res.json(burgers_db))
+        .catch(err => {
+          console.log(err);
+          res.json(err);
+        });
     });
+    //delete a burger bu its id
+    // app.delete("/api/burgers/:id", function(req, res){
+    //   burgers.remove(req.params.id)
+    //   .then(burgers_db => res.json(burgers_db))
+    //   .catch(err => {
+    //     console.log(err);
+    //     res.json(err);
+    //   });
+    // });
   }

@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     //package form data fro req.body purposes
     const burgerData = {
-      name: $("name-input").val().trim()
+      "burger_name": $("#name-input").val().trim()
     }
     $.ajax({
       url: "/api/burgers",
@@ -20,10 +20,10 @@ $(document).ready(function(){
 
   });
   //update burgers
-  $(".update-burger").on("click", function(){
+  $(".devour-burger").on("click", function(){
     //read back burger's id and devoured status
     const burgerId = $(this).attr("data-id");
-    const devoured = $(this).attr("data-devoured")
+    const devoured = $(this).attr("data-devoured");
     $.ajax({
       url: `/api/burgers/${burgerId}`,
       method: "PUT",
@@ -35,13 +35,15 @@ $(document).ready(function(){
     .catch(err => console.log(err));
 
   });
+  
   $(".delete-burger").on("click", function(){
     //get burger's id
+    console.log("click")
     const burgerId = $(this).attr("data-id");
 
     $.ajax({
       url: `/api/burgers/${burgerId}`,
-      method: "delete",
+      method: "DELETE",
     })
     .then(() => location.reload())
     .catch(err => console.log(err));

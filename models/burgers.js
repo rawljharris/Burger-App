@@ -33,7 +33,7 @@ const findById = burgerId => {
 const create = burgerDataObj => {
   return new Promise((resolve, reject) => {
 
-    connect.query('INSERT INTO burgers set ?', [burgerDataObj], function(err, burgers_db){
+    connection.query('INSERT INTO burgers set ?', [burgerDataObj], function(err, burgers_db){
       if (err) {
         return reject(err)
       }
@@ -45,12 +45,12 @@ const create = burgerDataObj => {
 //update burgers (set value of devoured) to true or false
 // update burgers set devoured = ? where id = ? ([true, 2)
 const update = (devouredValue, burgersId) => {
-  return new promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     //set devoured to boolean true/false
     devouredValue = (devouredValue === "true")
     ? true : false;
 
-    connection.query("UPDATE burgers SET DEVOURED = ? WHERE ID - ?", [devouredVaue, burgersId], function (err, burgers_db){
+    connection.query("UPDATE burgers SET DEVOURED = ? WHERE ID = ?", [devouredValue, burgersId], function (err, burgers_db){
       if (err) {
         return reject(err);
       }

@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-  <link rel="stylesheet" href="style.css">
-  <title>Title</title>
-</head>
-
-<body background="./assets/burgers.jpg" background="100%">
-
+<script src="./layouts/main.handlebars"></script>
   <div class="container">
     <div class="container bg">
 
@@ -37,13 +23,7 @@
               <li>
                 {{this.id}}
                 {{this.burger_name}}
-
-                <form data-id="{{this.id}}">
-                  <input type="hidden" name="devoured" value="true">
-                  
-                  <button class="btn-primary" type="submit">Devoured the Burger!</button>
-                </form>
-
+                <button data-id={{this.id}} class="btn btn-info devour-burger" data-devoured="true">Devour Burger</button> 
               </li>
               {{/unless}}
               {{/each}}
@@ -62,7 +42,7 @@
               <li>
                 {{this.id}}
                 {{this.burger_name}}
-
+                <button data-id={{this.id}} class="btn btn-danger delete-burger" data-devoured="true">Delete Burger</button>
               </li>
               {{/if}}
               {{/each}}
@@ -81,12 +61,12 @@
 
               <h2>Add A Burger!</h2>
 
-              <form class="create-update-form">
+              <form id="burger-form">
               <div>
                 <div class="form-group">
                   <label for="ca"></label>
                   <p>Enter a burger you want to order and click the Submit Order button.</p>
-                  <input type="text" id="ca" name="burger_name">
+                  <input type="text" id="name-input" class='form-control'>
                 </div>
           </div>
                 
@@ -104,12 +84,4 @@
       </div>
       </div>
       </div>
-
-
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+<script src="/assets/js/burgers.js"></script>
